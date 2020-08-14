@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Post;
+use App\User;
+use App\Comentario;
+
 
 class HomeController extends Controller
 {
@@ -13,6 +18,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home')
+            ->with('todosposts',Post::All())
+            ->with('todoscomentarios',Comentario::All())
+            ->with('todosusuarios',User::All())
+            ->with('idfdb',0);
+       
     }
+
+    public function feedback($idfdb)
+    {
+        return view('home')
+            ->with('todosposts',Post::All())
+            ->with('todoscomentarios',Comentario::All())
+            ->with('todosusuarios',User::All())
+            ->with('idfdb',$idfdb);      
+    } 
+
 }

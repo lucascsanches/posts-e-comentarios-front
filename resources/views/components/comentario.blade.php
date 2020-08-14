@@ -1,8 +1,10 @@
 <div class="card my-1">
     <div class="card-body">
-        <h5>Autor: <small>{{ $autor }}</small></h5>
+        <h6><b>Autor:</b> {{ $autor }}</h6>
+        <small>{{$data}}</small>
         <p>
-            {{ $slot }} 
-        </p>
+            {{ $conteudo }} 
+        </p>  
+        
     </div>
 </div>

@@ -10,10 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::resource('post', 'PostController');
+Route::get('/feedback/{idfdb}', 'HomeController@feedback')->name('home.feedback');
 
-Route::resource('comentario', 'ComentarioController');
+Route::post('/post', 'PostController@store')->name('post.store');
+
+Route::post('/post/{id}/comentario', 'PostController@novoComentario')->name('comentario.store');
